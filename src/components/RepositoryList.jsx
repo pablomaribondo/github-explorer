@@ -1,5 +1,7 @@
 import RepositoryItem from "./RepositoryItem";
 
+import "../styles/repositories.scss";
+
 const mockRepository = {
   name: "unform",
   description: "Forms in React",
