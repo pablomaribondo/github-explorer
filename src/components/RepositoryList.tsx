@@ -6,8 +6,14 @@ import "../styles/repositories.scss";
 
 const BASE_URL = "https://api.github.com/orgs/rocketseat/repos";
 
+interface Repository {
+  name: string;
+  description: string;
+  html_url: string;
+}
+
 const RepositoryList = () => {
-  const [repositories, setRepositories] = useState([]);
+  const [repositories, setRepositories] = useState<Repository[]>([]);
 
   useEffect(() => {
     fetch(BASE_URL)
@@ -21,14 +27,7 @@ const RepositoryList = () => {
 
       <ul>
         {repositories.map(repository => (
-          <RepositoryItem
-            key={repository.name}
-            repository={{
-              name: repository.name,
-              description: repository.description,
-              link: repository.html_url,
-            }}
-          />
+          <RepositoryItem key={repository.name} repository={repository} />
         ))}
       </ul>
     </section>
