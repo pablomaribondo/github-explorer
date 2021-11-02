@@ -1,7 +1,7 @@
 const RepositoryItem = ({ repository: { name, description, link } }) => {
   return (
     <li>
-      <strong>{name ?? "Default"}</strong>
+      <strong>{name}</strong>
       <p>{description}</p>
 
       <a href={link}>Acessar repositório</a>
