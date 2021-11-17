@@ -1,22 +1,35 @@
 section.repository-list {
-  margin: 40px;
-
-  h1 {
-    margin-bottom: 16px;
-  }
+  margin: 2rem;
 
   ul {
     list-style: none;
 
     li {
+      background: var(--shape);
+      border-radius: 5px;
+      padding: 2rem;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
       & + li {
-        margin-top: 20px;
+        margin-top: 1.25rem;
       }
 
-      p {
-        font-size: 14px;
-        color: #444;
-        margin-top: 8px;
+      div {
+        strong {
+          font-weight: 700;
+          font-size: 1.5rem;
+          color: var(--text-title);
+        }
+
+        p {
+          font-weight: 400;
+          font-size: 1.125rem;
+          color: var(--text-body);
+          margin-top: 8px;
+        }
       }
 
       a {
