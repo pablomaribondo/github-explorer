@@ -1,10 +1,12 @@
-import { useState, useEffect } from "react";
+import { FC, useState, useEffect } from "react";
 
 import RepositoryItem from "./RepositoryItem";
 
 import "../styles/repositories.scss";
 
-const BASE_URL = "https://api.github.com/orgs/rocketseat/repos";
+interface RepositoryListProps {
+  profile: string;
+}
 
 interface Repository {
   name: string;
@@ -12,8 +14,10 @@ interface Repository {
   html_url: string;
 }
 
-const RepositoryList = () => {
+export const RepositoryList: FC<RepositoryListProps> = ({ profile }) => {
   const [repositories, setRepositories] = useState<Repository[]>([]);
+
+  const BASE_URL = `https://api.github.com/orgs/${profile}/repos`;
 
   useEffect(() => {
     fetch(BASE_URL)
@@ -23,15 +27,11 @@ const RepositoryList = () => {
 
   return (
     <section className="repository-list">
-      <h1>Lista de Repositórios</h1>
-
       <ul>
-        {repositories.map(repository => (
+        {repositories && repositories.map(repository => (
           <RepositoryItem key={repository.name} repository={repository} />
         ))}
       </ul>
     </section>
   );
 };
-
-export default RepositoryList;
